@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+:root {
+  --left-bg-color: rgba(87,84,236, 0.7); 
+  --right-bg-color: rgba(43, 43, 43, 0.8);
+}
+
 *{ /* universal selector, lo de aquí aplica a toda la página  */
   box-sizing: border-box; /*si agregamos algun padding o borde a cualquier elemento, no afecte el ancho de los mismos*/
 }
@@ -9,6 +14,16 @@ body{
     height: 100vh; /*(vh=viewport heigh)para que el contenido tome todo el alto de la página en el navegador, así se puede centrar también el contenido en la altura*/
     overflow: hidden; /*para no mostrar las barras de scroll por defecto*/
     margin: 0;
+}
+
+h1 {
+  font-size: 4rem;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%);/*para que cada título quede en el centro de su respectiva sección, sin esto quedan muy a la derecha*/
+  white-space: nowrap; /*para que el texto no se pase a la linea de abajo cuando la ventana se encoje horizontalmente*/
 }
 
 .container {
@@ -28,4 +43,29 @@ body{
 .split.left {
   left: 0;
   background: url('ps.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.split.left::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--left-bg-color);
+}
+
+.split.right {
+  right: 0; 
+  background: url('xbox.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+
+.split.right::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--right-bg-color);
 }
