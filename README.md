@@ -1,1 +1,1 @@
-# This is my Training Section
+# This is my training section
