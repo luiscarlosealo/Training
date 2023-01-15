@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*{ /* universal selector, lo de aquí aplica a toda la página  */
+  box-sizing: border-box; /*si agregamos algun padding o borde a cualquier elemento, no afecte el ancho de los mismos*/
+}
+
+body{
+    background-image: linear-gradient(90deg, #7d5fff, #7158e2); 
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /*(vh=viewport heigh)para que el contenido tome todo el alto de la página en el navegador, así se puede centrar también el contenido en la altura*/
+    overflow: hidden; /*para no mostrar las barras de scroll por defecto*/
+    margin: 0;
+}
+
+.search {
+  position: relative;
+  height: 50px;
+}
+
+.search .input { /*propiedades del cuadro de búsqueda*/
+  background-color: #fff;
+  border: 0;
+  font-size: 18px;
+  padding: 15px;
+  height: 50px;
+  width: 50px; /*inicialmente aparece contraido, la idea es que se expanda al dar click*/
+  transition: width 0.3s ease;  /*transición para cuando se expanda el ancho*/
+}
+
+.btn {
+  background-color: #fff;
+  border: 0;
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  transition: transform 0.3s ease;
+}
+
+.btn:focus, .input:focus { /*eliminar el outline cuando se seleccione el botón*/
+  outline: none;
+}
+
+.search.active .input { /*Cuando la clase "search" tenga una clase "active" la clase "input" debe hacer lo siguiente*/
+  width: 200px; /*el campo de búsqueda (input) debe crecer hasta 200px*/
+}
+
+.search.active .btn {
+  transform: translateX(198px);
+}

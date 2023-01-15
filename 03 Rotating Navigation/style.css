@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+*{ /* universal selector, lo de aquí aplica a toda la página  */
+  box-sizing: border-box; /*si agregamos algun padding o borde a cualquier elemento, no afecte el ancho de los mismos*/
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    background-color: #333;
+    color: #222;
+    overflow-x: hidden; /*para no mostrar las barras de scroll horizontales, quedan sólo las verticales*/
+    margin: 0;
+}
+
+.container {
+  background-color: #fafafa;
+  transform-origin: top left; /*para cambiar el pivot de rotación a la parte superior izquierda*/
+  transition: transform 0.5s ease; /*cuando rote lo haga a 0.5 segundos, suavizado.*/
+  width: 100vw;
+  min-height: 10vh;
+  padding: 50px;
+}
+
+.container.show-nav {  /*si agregamos esta clase "show-nav" a la clase container del HTML, todo el container rotará*/
+  transform: rotate(-20deg); 
+}
+
+.circle-container {
+  /*posición del círculo de menú en la pantalla, superior izquierda, queda la mitad por fuera arriba y a la izquierda*/
+  position: fixed;  
+  top: -100px;
+  left: -100px;
+}
+
+.circle { /*propiedades del círculo de menú*/
+  background-color: #ff7979;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.5s ease;
+}
+
+.container.show-nav .circle { /*cuando la clase "container" tenga la clase "show-nav", la clase "circle" que está dentro debe hacer lo siguiente */
+  transform: rotate(-70deg); /*rotar el círculo para que podamos ver el botón close*/
+}
+
+.circle button {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  background: transparent;
+  border: 0;
+  font-size: 26px; /*tamaño de los botones*/
+  color: #fff; /*color de los botones*/
+}
+
+.circle button:focus { /*ocultar el borde cuando se le dé click al botón*/
+  outline: none;
+}
+
+.circle button#open {
+  left: 60%; /*posición relativa del botón open con respecto al círculo, que es la clase que contiene a esta*/
+}
+
+.circle button#close {
+  top: 60%; /*posición relativa para el botón close*/
+  transform: rotate(90deg); /*para que el botón rote*/
+  transform-origin: top left;
+}
+
+.container.show-nav + nav li { /*cuando la clase "container" tenga la clase "show-nav" queremos que los elementos de menú (li) sean afectados por lo siguiente*/
+  transform: translateX(0); /*para que vuelvan a la posición inicial*/
+  transition-delay: 0.3s; /*para que entren con delay*/
+}
+
+nav { /*posición del menú de navegación*/
+  position: fixed;
+  bottom: 40px; /*40 pixeles desde abajo*/
+  left: 0;
+  z-index: 100; /*para que se mantenga encima de los demás elementos*/
+}
+
+nav ul { /*elementos del menú*/
+  list-style-type: none; /*para quitarle las viñetas a los elementos del menú */
+  padding-left: 30px;
+}
+
+nav ul li { /*elementos de texto del menú*/
+  text-transform: uppercase; /*convierte el texto a mayúscula*/
+  color: #fff;
+  margin: 40px 0; /*separar los elementos del menú*/
+  transform: translateX(-100%);  /* Para que el menú arranque fuera de la pantalla */
+  transition: transform 0.4s ease-in; /*Para que entre animado desde x=-100 hasta la posición final*/
+}
+
+nav ul li i { /*íconos del menú*/
+  font-size: 20px; /*tamaño íconos*/
+  margin-right: 10px; /*espacio entre ícono y texto*/
+}
+
+nav ul li + li { /*afecta al segundo elemento del menú*/
+  margin-left: 15px; /*mueve 15 pixeles desde la izquierda con respecto al primer elemento de menú, para que el menú quede en escalera*/
+  transform: translateX(-150%);  /* Para que el menú arranque fuera de la pantalla y compense el margen en forma de escalera */
+}
+
+nav ul li + li + li { /*afecta al tercer elemento del menú*/
+  margin-left: 30px; /*mueve 30 pixeles desde la izquierda con respecto al primer elemento de menú, para que el menú quede en escalera*/
+  transform: translateX(-200%);  /* Para que el menú arranque fuera de la pantalla y compense el margen en forma de escalera */
+}
+
+.content img { /*para que las imágenes en la clase "content" se adapten en ancho a la página*/
+  max-width: 100%;
+}
+
+.content {
+  max-width: 1000px; /*el contenido se adapta hasta un máximo de 1000 píxeles de ancho, de ahí se queda fijo en ese valor*/
+  margin: 50px auto;
+}
+
+.content h1 {
+  margin: 0;
+}
+
+.content small {
+  color: #555;
+  font-style: italic;
+}
+
+.content p {
+  color: #333;
+  line-height: 1.5;
+}

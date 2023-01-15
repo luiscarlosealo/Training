@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+*{ /* universal selector, lo de aquí aplica a toda la página  */
+  box-sizing: border-box; /*si agregamos algun padding o borde a cualquier elemento, no afecte el ancho de los mismos*/
+}
+
+body{
+    font-family: 'Muli', sans-serif;
+    background-color: #f6f7fb;
+    display: flex;
+    flex-direction: column; /*para que los elementos no se muestren en fila, sino uno debajo del otro en columnas  */
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /*(vh=viewport heigh)para que el contenido tome todo el alto de la página en el navegador, así se puede centrar también el contenido en la altura*/
+    overflow: hidden; /*para no mostrar las barras de scroll por defecto*/
+    margin: 0;
+}
+:root { /*se pueden definir variables globales aquí*/
+  --line-border-fill: #3498db; /*variable para guardar el color, así se puede cambiar sólo desde aquí sin tener que cambiar en cada parte que se necesite. "--line-border-fill" es el nombre inventado de la variable */
+  --line-border-empty: #e0e0e0;
+}
+
+.container {
+  text-align: center;
+}
+
+.progress-container { /*Afecta sólo a los circulos con los números, no a los botones*/
+  display: flex;
+  justify-content: space-between; /*agrega espacio entre los números para que se distribuyan a lo ancho del contenedor */
+  position: relative;
+  margin-bottom: 30px;
+  max-width: 100%;
+  width: 350px; /*ancho del contenedor*/
+}
+
+.progress-container::before { /*barra gris detrás de barra progreso */
+  content: ""; /*hay que poner esto al usar el ::before para que no quede invisible la barra*/
+  background-color: var(--line-border-empty); /*aquí se está llamando la variable definida arriba para el color*/
+  position: absolute; /*ubicación absoluta dentro del contenedor*/
+  top: 40%; /*posición desde arriba*/
+  left: 0;
+  height: 4px; /*grosor de la barra*/
+  width: 100%; /*porcentaje de completitud, 0% invisible, 100% llena*/
+  z-index: -1;
+}
+
+.progress { /*barra de progreso */
+  background-color: var(--line-border-fill); /*aquí se está llamando la variable definida arriba para el color*/
+  position: absolute; /*ubicación absoluta dentro del contenedor*/
+  top: 40%; /*posición desde arriba*/
+  left: 0;
+  height: 4px; /*grosor de la barra*/
+  width: 0%; /*porcentaje de completitud, 0% invisible, 100% llena*/
+  z-index: -1;
+  transition: 0.4s ease; /*animación de 0.4 segundos, suavizada*/
+}
+
+.circle { /*propiepades de los círculos*/
+  background-color: #fff;
+  color: #999;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--line-border-empty); 
+  transition: 0.4s ease;
+}
+
+.circle.active {
+  border-color: var(--line-border-fill);
+}
+
+.btn {
+  background-color: var(--line-border-fill);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 8px 30px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.btn:active {
+  transform: scale(0.98); /*reducir el tamaño del botón al darle click*/
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn:disabled {
+  background-color: var(--line-border-empty);
+  cursor: not-allowed;
+}

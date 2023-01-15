@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+*{ /* universal selector, lo de aquí aplica a toda la página  */
+  box-sizing: border-box; /*si agregamos algun padding o borde a cualquier elemento, no afecte el ancho de los mismos*/
+}
+
+body{
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /*(vh=viewport heigh)para que el contenido tome todo el alto de la página en el navegador, así se puede centrar también el contenido en la altura*/
+    overflow: hidden; /*para no mostrar las barras de scroll por defecto*/
+    margin: 0;
+}
+
+.bg {
+  background: url(https://images.unsplash.com/photo-1672841828271-54340a6fbcd3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80) no-repeat center center/cover; /*los atributos de no-repeat en adelante se pueden poner aquí para afectar la forma como se muestra la imágen*/
+  position: absolute;
+  /*hay que mover la imágen hacia arriba y a la izquierda, para que al desenfocarla no se vea el difuminado a blanco en los bordes*/
+  top: -30px; 
+  left: -30px; 
+  /*como queda un espacio abajo y a la derecha, hay que compensarlo con los siguientes valores para que rellenen la pantalla*/
+  width: calc(100vw + 60px);
+  height: calc(100vh + 60px);
+  z-index: -1; /*para que sea el elemento de más abajo y no se superponga a otros*/
+  filter: blur(0px); /*desenfoca la imágen*/
+}
+
+.loading-text {
+  font-size: 50px;
+  color: #fff;
+}

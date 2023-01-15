@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*{ /* universal selector, lo de aquí aplica a toda la página  */
+  box-sizing: border-box; /*si agregamos algun padding o borde a cualquier elemento, no afecte el ancho de los mismos*/
+}
+
+body{
+  background-color: #efedd6;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column; /*para que los elementos no se muestren en fila, sino uno debajo del otro en columnas  */
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    overflow-x: hidden; /*oculta el scroll horizontal*/
+}
+
+h1 {
+  margin: 10px;
+}
+
+.box h2 {
+  margin: 45px;
+}
+
+.box {
+  background-color: slategray;
+  color: #fff;
+  display: flex; /*para ajustar las tarjetas*/
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3); /*drop shadow: x offset, y offset, blur, color*/
+  transform: translateX(400%); /*para sacar las tarjetas fuera de la pantalla a la derecha*/
+  transition: transform 0.4s ease;
+}
+
+.box:nth-of-type(even) { /*afecta a los elementos pares de la clase "box", para que entren de la izquierda y la derecha alternadamente*/
+  transform: translateX(-400%); /*para sacar las tarjetas fuera de la pantalla a la izquierda*/
+}
+
+.box.show {
+  transform: translateX(0); /*una vez las tarjetas tengan la clase show, vuelven a la posición x=0*/
+}
