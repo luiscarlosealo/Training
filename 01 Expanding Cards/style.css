@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+*{ /* universal selector, lo de aquí aplica a toda la página  */
+  box-sizing: border-box; /*si agregamos algun padding o borde a cualquier elemento, no afecte el ancho de los mismos*/
+}
+
+body{
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    flex-direction: column; /*para que los elementos no se muestren en fila, sino uno debajo del otro en columnas  */
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /*(vh=viewport heigh)para que el contenido tome todo el alto de la página en el navegador, así se puede centrar también el contenido en la altura*/
+    overflow: hidden; /*para no mostrar las barras de scroll por defecto*/
+    margin: 0;
+}
+
+.container {  /*stilos para la clase "container" en el html*/
+  display: flex;
+  width: 90vw; /*para que el contenido se muestre en el 90% de la pantalla */
+
+}
+
+.panel {
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5; /*controla el ancho de cada imagen para que queden del mismo ancho */
+  margin: 10px; /*espacio entre las imágenes*/
+  position: relative;
+  transition: flex 0.7s ease-in-out;
+}
+
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20%;
+  margin: 0;
+  opacity: 0; /*para que los textos en cada panel sean invisibles hasta que la imagen actual esté activa*/
+}
+
+.panel.active {  /*si la clase "panel" tiene tambien una clase "active"*/
+  flex: 5;
+}
+
+.panel.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s; /*anima opacidad en 0.3 segundos, ease in, con 0.4 segundos de delay*/
+}
+
+@media(max-width: 480px) { /*lo que está aqui contenido es para pantallas inferiores a 480px*/
+  .container {
+    width: 100vh;
+  }
+
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none; /*con esto se oculta el panel 4 y 5 en pantallas menos a 480px de ancho*/
+  }
+}
