@@ -5,6 +5,8 @@
 }
 
 body{
+    background-color: steelblue;
+    color: #fff;
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column; /*para que los elementos no se muestren en fila, sino uno debajo del otro en columnas  */
@@ -13,4 +15,65 @@ body{
     height: 100vh; /*(vh=viewport heigh)para que el contenido tome todo el alto de la página en el navegador, así se puede centrar también el contenido en la altura*/
     overflow: hidden; /*para no mostrar las barras de scroll por defecto*/
     margin: 0;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px 40px;
+  border-radius: 5px;
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.container a {
+  text-decoration: none;
+  color: lightblue;
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  background: lightblue;
+  padding: 15px;
+  font-family: inherit;
+  font-size: 16px;
+  border: 0;
+  border-radius: 5px;
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.text {
+  margin-top: 30px;
+}
+
+.form-control {
+  position: relative;
+  margin: 20px 0 40px;
+  width: 300px;
+}
+
+.form-control input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px #fff solid;
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.form-control input:focus, .form-control input:valid { /*input:focus para quitar el borde cuando el campo de texto se selecciona. input:valid para indicar al usuario que ingresó correctamente los datos en el campo*/
+  outline: 0;
 }
