@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*{ /* universal selector, lo de aquí aplica a toda la página  */
+  box-sizing: border-box; /*si agregamos algun padding o borde a cualquier elemento, no afecte el ancho de los mismos*/
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column; /*para que los elementos no se muestren en fila, sino uno debajo del otro en columnas  */
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /*(vh=viewport heigh)para que el contenido tome todo el alto de la página en el navegador, así se puede centrar también el contenido en la altura*/
+    overflow: hidden; /*para no mostrar las barras de scroll por defecto*/
+    margin: 0;
+}
