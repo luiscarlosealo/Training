@@ -77,3 +77,23 @@ body{
 .form-control input:focus, .form-control input:valid { /*input:focus para quitar el borde cuando el campo de texto se selecciona. input:valid para indicar al usuario que ingresó correctamente los datos en el campo*/
   outline: 0;
 }
+
+.form-control label {
+  position: absolute;
+  top: 15px;
+  left: 0;
+}
+
+.form-control label span {
+  display: inline-block;
+  font-size: 18px;
+  min-width: 5px;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus + label span,
+.form-control input:valid + label span { /*para cuando demos click en los campos del form*/
+  color: lightblue;
+  transform: translateY(-30px); /*desplaza el texto -30px hacia arriba*/
+
+}
